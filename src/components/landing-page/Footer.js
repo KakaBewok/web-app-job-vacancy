@@ -22,7 +22,7 @@ const Footer = () => {
         {!Cookies.get('token') ? (
           <div></div>
         ) : (
-          <Link className="link link-hover" to="/dashbord">
+          <Link className="link link-hover" to="/dashboard">
             Dashbord
           </Link>
         )}

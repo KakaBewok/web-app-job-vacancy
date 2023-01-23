@@ -38,7 +38,7 @@ const NavigationBar = () => {
               <div></div>
             ) : (
               <li>
-                <Link to="/dashbord">Dashbord</Link>
+                <Link to="/dashboard">Dashbord</Link>
               </li>
             )}
           </ul>
@@ -65,7 +65,7 @@ const NavigationBar = () => {
             <div></div>
           ) : (
             <li>
-              <Link to="/dashbord">Dashbord</Link>
+              <Link to="/dashboard">Dashbord</Link>
             </li>
           )}
         </ul>

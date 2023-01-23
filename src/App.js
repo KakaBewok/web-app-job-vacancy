@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Cookies from 'js-cookie';
-import DashbordPage from './pages/dashbord-page/DashbordPage';
+import DashboardPage from './pages/dashboard-page/DashboardPage';
+import TableDataPage from './pages/dashboard-page/DataTablePage';
 import LandingPage from './pages/landing-page/LandingPage';
 import Login from './pages/landing-page/LoginPage';
 import SignupPage from './pages/landing-page/SignupPage';
@@ -26,7 +27,11 @@ const App = () => {
           </Routes>
         ) : (
           <Routes>
-            <Route path="/dashbord" element={<DashbordPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route
+              path="/dashboard/list-job-vacancy"
+              element={<TableDataPage />}
+            />
             <Route path="/" element={<LandingPage />} />
             <Route path="/home" element={<LandingPage />} />
             <Route path="/job-vacancy/:id" element={<CardDetailPage />} />

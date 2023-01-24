@@ -1,12 +1,19 @@
+/* eslint-disable eqeqeq */
 import React from 'react';
 import Card from './Card';
 
 const CardList = ({ jobs, loading, keyword, filterData }) => {
-  const jobList = jobs.filter((job) => {
-    return job.title.toUpperCase().includes(keyword.toUpperCase()) &&
-      job.company_city
-        .toUpperCase()
-        .includes(filterData.filterCity.toUpperCase()) &&
+  const jobListSearch = jobs.filter((job) => {
+    return (
+      job.title.toUpperCase().includes(keyword.toUpperCase()) ||
+      job.company_city.toUpperCase().includes(keyword.toUpperCase()) ||
+      job.company_name.toUpperCase().includes(keyword.toUpperCase())
+    );
+  });
+  const jobListFilter = jobs.filter((job) => {
+    return job.company_city
+      .toUpperCase()
+      .includes(filterData.filterCity.toUpperCase()) &&
       job.company_name
         .toUpperCase()
         .includes(filterData.filterCompany.toUpperCase()) &&
@@ -37,9 +44,9 @@ const CardList = ({ jobs, loading, keyword, filterData }) => {
 
   return (
     <div className="flex flex-wrap mx-auto justify-center">
-      {jobList.map((job) => (
-        <Card key={job.id} {...job} />
-      ))}
+      {keyword
+        ? jobListSearch.map((job) => <Card key={job.id} {...job} />)
+        : jobListFilter.map((job) => <Card key={job.id} {...job} />)}
     </div>
   );
 };

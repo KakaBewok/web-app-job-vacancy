@@ -1,14 +1,45 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Cookies from 'js-cookie';
+import { Spinner } from 'flowbite-react';
+import Filter from '../../components/landing-page/Filter';
 
-const ContentDashboard = ({ jobs }) => {
+const ContentDashboard = ({
+  jobs,
+  loading,
+  keyword,
+  keywordSearchChange,
+  keywordFilterCityChange,
+  keywordFilterCompanyChange,
+  keywordFilterMinSalaryChange,
+  filterData,
+}) => {
   const rupiah = (number) => {
     return new Intl.NumberFormat('id-ID', {
       style: 'currency',
       currency: 'IDR',
     }).format(number);
   };
+
+  const jobListSearch = jobs.filter((job) => {
+    return (
+      job.title.toUpperCase().includes(keyword.toUpperCase()) ||
+      job.company_city.toUpperCase().includes(keyword.toUpperCase()) ||
+      job.company_name.toUpperCase().includes(keyword.toUpperCase())
+    );
+  });
+  const jobListFilter = jobs.filter((job) => {
+    return job.company_city
+      .toUpperCase()
+      .includes(filterData.filterCity.toUpperCase()) &&
+      job.company_name
+        .toUpperCase()
+        .includes(filterData.filterCompany.toUpperCase()) &&
+      filterData.filterMinSalary == 0
+      ? job.salary_min > -1
+      : job.salary_min == filterData.filterMinSalary;
+  });
 
   return (
     <div className="h-screen px-4 pb-24 overflow-auto md:px-6">
@@ -24,233 +55,370 @@ const ContentDashboard = ({ jobs }) => {
       {/* Table*/}
       <div className="container max-w-full lg:max-w-5xl px-4 mx-auto sm:px-8">
         <div className="py-8">
-          {/* Search */}
-          <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">
-            <h2 className="text-2xl leading-tight">Jobs</h2>
-            <div className="text-end">
-              <form className="flex justify-center w-full space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
-                <div className=" relative ">
-                  <input
-                    type="text"
-                    id='"form-subscribe-Filter'
-                    className=" rounded-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="Search by Position"
-                  />
-                </div>
-              </form>
+          <div>
+            {/* Search */}
+            <div className="flex flex-col sm:flex-row justify-between w-full mb-1 sm:mb-0">
+              <h2 className="hidden sm:block text-3xl font-semibold leading-tight">
+                Job Lists
+              </h2>
+              <div className="text-end">
+                <form className="flex justify-center w-full space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
+                  <div className=" relative ">
+                    <input
+                      type="text"
+                      id='"form-subscribe-Filter'
+                      className=" rounded-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      placeholder="Search"
+                      value={keyword}
+                      onChange={(event) =>
+                        keywordSearchChange(event.target.value)
+                      }
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <br />
+            <hr />
+            {/* Filter */}
+            <div className="pl-5">
+              <Filter
+                keywordFilterCityChange={keywordFilterCityChange}
+                keywordFilterCompanyChange={keywordFilterCompanyChange}
+                keywordFilterMinSalaryChange={keywordFilterMinSalaryChange}
+              />
             </div>
           </div>
+
           {/* Table data and Pagination */}
           <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
             <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
-              {/* Table */}
-              <table className="min-w-full leading-normal ">
-                {/* Heading */}
-                <thead>
-                  <tr>
-                    {/* Company */}
-                    <th
-                      scope="col"
-                      className="px-5 py-7 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Company
-                    </th>
-                    {/* Position */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold  text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Position
-                    </th>
-                    {/* Create At */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Created at
-                    </th>
-                    {/* Status */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Status
-                    </th>
-                    {/* Tenure */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Tenure
-                    </th>
-                    {/* City */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      City
-                    </th>
-                    {/* Min. Salary */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Min. Salary
-                    </th>
-                    {/* Max. Salary */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Max. Salary
-                    </th>
-                    {/* Job Desc. */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Job Desc.
-                    </th>
-                    {/* Qualification */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Qualification
-                    </th>
-                    {/* Type */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Type
-                    </th>
-                    {/* Action */}
-                    <th
-                      scope="col"
-                      className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
-                    >
-                      Action
-                    </th>
-                  </tr>
-                </thead>
-                {/* Body */}
-                <tbody>
-                  {jobs.map((job) => (
-                    <tr key={job.id}>
+              {loading.isLoading ? (
+                <div className="my-20 w-9 mx-auto">
+                  <Spinner aria-label="Large spinner example" size="lg" />
+                </div>
+              ) : (
+                <table className="min-w-full leading-normal">
+                  {/* Heading */}
+                  <thead>
+                    <tr>
                       {/* Company */}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0">
-                            <a href="#" className="relative block">
-                              <img
-                                alt={job.company_name}
-                                src={job.company_image_url}
-                                className="mx-auto object-cover rounded-full h-10 w-10 "
-                              />
-                            </a>
-                          </div>
-                          <div className="ml-3 w-24">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              {job.company_name}
-                            </p>
-                          </div>
-                        </div>
-                      </td>
+                      <th
+                        scope="col"
+                        className="px-5 py-7 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Company
+                      </th>
                       {/* Position */}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p className="text-gray-900 whitespace-no-wrap w-24">
-                          {job.title}
-                        </p>
-                      </td>
-                      {/* Created at */}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p className="text-gray-900 whitespace-no-wrap w-24">
-                          {job.updated_at}
-                        </p>
-                      </td>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold  text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Position
+                      </th>
+                      {/* Create At */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Created at
+                      </th>
                       {/* Status */}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        {job.job_status ? (
-                          <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
-                            <span
-                              aria-hidden="true"
-                              className="absolute inset-0 bg-green-200 rounded-full opacity-50"
-                            ></span>
-                            <span className="relative">hiring</span>
-                          </span>
-                        ) : (
-                          <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-red-900">
-                            <span
-                              aria-hidden="true"
-                              className="absolute inset-0 bg-red-200 rounded-full opacity-50"
-                            ></span>
-                            <span className="relative">close</span>
-                          </span>
-                        )}
-                      </td>
-                      {/* Tenure*/}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p className="text-gray-900 whitespace-no-wrap w-16">
-                          {job.job_tenure}
-                        </p>
-                      </td>
-                      {/* City*/}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p className="text-gray-900 whitespace-no-wrap w-24">
-                          {job.company_city}
-                        </p>
-                      </td>
-                      {/* Min. salary*/}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p className="text-gray-900 whitespace-no-wrap w-24">
-                          {rupiah(job.salary_min)}
-                        </p>
-                      </td>
-                      {/* Max. salary*/}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p className="text-gray-900 whitespace-no-wrap w-24">
-                          {rupiah(job.salary_max)}
-                        </p>
-                      </td>
-                      {/* Job Desc*/}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p className="text-gray-900 whitespace-no-wrap w-96">
-                          {job.job_description}
-                        </p>
-                      </td>
-                      {/* Job qualification*/}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p className="text-gray-900 whitespace-no-wrap w-96">
-                          {job.job_qualification}
-                        </p>
-                      </td>
-                      {/* Job type*/}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p className="text-gray-900 whitespace-no-wrap w-20">
-                          {job.job_type}
-                        </p>
-                      </td>
-                      {/* Action edit*/}
-                      <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 flex items-center justify-center gap-5">
-                        <a
-                          href="#"
-                          className="text-gray-900 whitespace-no-wrap "
-                        >
-                          Edit
-                        </a>
-                        <button className="btn btn-error">Delete</button>
-                      </td>
-                      {/* Action delete*/}
-                      {/* <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <button className="btn btn-error">Delete</button>
-                      </td> */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Status
+                      </th>
+                      {/* Tenure */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Tenure
+                      </th>
+                      {/* City */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        City
+                      </th>
+                      {/* Min. Salary */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Min. Salary
+                      </th>
+                      {/* Max. Salary */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Max. Salary
+                      </th>
+                      {/* Job Desc. */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Job Desc.
+                      </th>
+                      {/* Qualification */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Qualification
+                      </th>
+                      {/* Type */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Type
+                      </th>
+                      {/* Action */}
+                      <th
+                        scope="col"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                      >
+                        Action
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  {/* Body */}
+                  {keyword ? (
+                    <tbody>
+                      {jobListSearch.map((job) => (
+                        <tr key={job.id}>
+                          {/* Company */}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <div className="flex items-center">
+                              <div className="flex-shrink-0">
+                                <a href="#" className="relative block">
+                                  <img
+                                    alt={job.company_name}
+                                    src={job.company_image_url}
+                                    className="mx-auto object-cover rounded-full h-14 w-14"
+                                  />
+                                </a>
+                              </div>
+                              <div className="ml-5 w-40">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  {job.company_name}
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                          {/* Position */}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {job.title}
+                            </p>
+                          </td>
+                          {/* Created at */}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {job.updated_at}
+                            </p>
+                          </td>
+                          {/* Status */}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            {job.job_status ? (
+                              <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
+                                <span
+                                  aria-hidden="true"
+                                  className="absolute inset-0 bg-green-200 rounded-full opacity-50"
+                                ></span>
+                                <span className="relative">hiring</span>
+                              </span>
+                            ) : (
+                              <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-red-900">
+                                <span
+                                  aria-hidden="true"
+                                  className="absolute inset-0 bg-red-200 rounded-full opacity-50"
+                                ></span>
+                                <span className="relative">close</span>
+                              </span>
+                            )}
+                          </td>
+                          {/* Tenure*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-16">
+                              {job.job_tenure}
+                            </p>
+                          </td>
+                          {/* City*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {job.company_city}
+                            </p>
+                          </td>
+                          {/* Min. salary*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {rupiah(job.salary_min)}
+                            </p>
+                          </td>
+                          {/* Max. salary*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {rupiah(job.salary_max)}
+                            </p>
+                          </td>
+                          {/* Job Desc*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 ">
+                            <p className="text-gray-900 whitespace-no-wrap w-[50rem]">
+                              {job.job_description}
+                            </p>
+                          </td>
+                          {/* Job qualification*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-[50rem]">
+                              {job.job_qualification}
+                            </p>
+                          </td>
+                          {/* Job type*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-20">
+                              {job.job_type}
+                            </p>
+                          </td>
+                          {/* Action*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <div className="flex items-center justify-center gap-3">
+                              <button className="btn btn-link capitalize">
+                                Edit
+                              </button>
+                              <button className="btn btn-error text-white hover:bg-red-500 capitalize">
+                                Delete
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  ) : (
+                    <tbody>
+                      {jobListFilter.map((job) => (
+                        <tr key={job.id}>
+                          {/* Company */}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <div className="flex items-center">
+                              <div className="flex-shrink-0">
+                                <a href="#" className="relative block">
+                                  <img
+                                    alt={job.company_name}
+                                    src={job.company_image_url}
+                                    className="mx-auto object-cover rounded-full h-14 w-14"
+                                  />
+                                </a>
+                              </div>
+                              <div className="ml-5 w-40">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  {job.company_name}
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                          {/* Position */}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {job.title}
+                            </p>
+                          </td>
+                          {/* Created at */}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {job.updated_at}
+                            </p>
+                          </td>
+                          {/* Status */}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            {job.job_status ? (
+                              <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
+                                <span
+                                  aria-hidden="true"
+                                  className="absolute inset-0 bg-green-200 rounded-full opacity-50"
+                                ></span>
+                                <span className="relative">hiring</span>
+                              </span>
+                            ) : (
+                              <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-red-900">
+                                <span
+                                  aria-hidden="true"
+                                  className="absolute inset-0 bg-red-200 rounded-full opacity-50"
+                                ></span>
+                                <span className="relative">close</span>
+                              </span>
+                            )}
+                          </td>
+                          {/* Tenure*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-16">
+                              {job.job_tenure}
+                            </p>
+                          </td>
+                          {/* City*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {job.company_city}
+                            </p>
+                          </td>
+                          {/* Min. salary*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {rupiah(job.salary_min)}
+                            </p>
+                          </td>
+                          {/* Max. salary*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                              {rupiah(job.salary_max)}
+                            </p>
+                          </td>
+                          {/* Job Desc*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 ">
+                            <p className="text-gray-900 whitespace-no-wrap w-[50rem]">
+                              {job.job_description}
+                            </p>
+                          </td>
+                          {/* Job qualification*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-[50rem]">
+                              {job.job_qualification}
+                            </p>
+                          </td>
+                          {/* Job type*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <p className="text-gray-900 whitespace-no-wrap w-20">
+                              {job.job_type}
+                            </p>
+                          </td>
+                          {/* Action*/}
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                            <div className="flex items-center justify-center gap-3">
+                              <button className="btn btn-link capitalize">
+                                Edit
+                              </button>
+                              <button className="btn btn-error text-white hover:bg-red-500 capitalize">
+                                Delete
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  )}
+                </table>
+              )}
               {/* Pagination */}
-              <div className="flex flex-col items-center px-5 py-5 bg-white xs:flex-row xs:justify-between">
+              <div
+                className="flex flex-col items-center px-5 py-5 bg-white xs:flex-row xs:justify-between tooltip tooltip-top"
+                data-tip="Under maintenance"
+              >
                 <div className="flex items-center">
                   <button
                     type="button"

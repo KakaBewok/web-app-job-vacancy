@@ -9,19 +9,47 @@ import Footer from '../../components/landing-page/Footer';
 import { getAllJob } from '../../utils/api-data';
 
 const TableDataPage = () => {
-  const { jobs, setJobs } = useContext(GlobalContext);
+  const {
+    jobs,
+    setJobs,
+    isLoading,
+    setIsLoading,
+    keyword,
+    setKeyword,
+    setSearchParams,
+    filterData,
+    setFilterData,
+  } = useContext(GlobalContext);
+
+  const loading = {
+    isLoading,
+    setIsLoading,
+  };
 
   useEffect(() => {
     const FetchData = async () => {
       const { data } = await getAllJob();
 
       setJobs(data.data);
+      setIsLoading(false);
     };
 
     FetchData();
   }, []);
 
-  console.log(jobs);
+  const onKeywordSearchChangeHandler = (keyword) => {
+    setKeyword(keyword);
+    setSearchParams({ keyword });
+  };
+  const onKeywordFilterCityChangeHandler = (keyword) => {
+    setFilterData({ ...filterData, filterCity: keyword });
+  };
+  const onKeywordFilterCompanyChangeHandler = (keyword) => {
+    setFilterData({ ...filterData, filterCompany: keyword });
+  };
+  const onKeywordFilterMinSalaryChangeHandler = (keyword) => {
+    setFilterData({ ...filterData, filterMinSalary: keyword });
+  };
 
   return (
     <div>
@@ -30,7 +58,18 @@ const TableDataPage = () => {
           <SideBar />
           <div className="flex flex-col w-full md:space-y-4">
             <NavSideBar />
-            <ContentDashboard jobs={jobs} />
+            <ContentDashboard
+              jobs={jobs}
+              loading={loading}
+              keyword={keyword}
+              keywordSearchChange={onKeywordSearchChangeHandler}
+              keywordFilterCityChange={onKeywordFilterCityChangeHandler}
+              keywordFilterCompanyChange={onKeywordFilterCompanyChangeHandler}
+              keywordFilterMinSalaryChange={
+                onKeywordFilterMinSalaryChangeHandler
+              }
+              filterData={filterData}
+            />
           </div>
         </div>
       </main>

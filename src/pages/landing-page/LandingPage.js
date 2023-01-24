@@ -13,17 +13,12 @@ const LandingPage = () => {
   const {
     jobs,
     setJobs,
-    // input,
-    // setInput,
-    // currentId,
-    // setCurrentId,
     isLoading,
     setIsLoading,
     keyword,
     setKeyword,
     filterData,
     setFilterData,
-    // searchParams
     setSearchParams,
   } = useContext(GlobalContext);
 

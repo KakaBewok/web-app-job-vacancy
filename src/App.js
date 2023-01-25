@@ -8,6 +8,7 @@ import Login from './pages/landing-page/LoginPage';
 import SignupPage from './pages/landing-page/SignupPage';
 import CardDetailPage from './pages/landing-page/DetailPage';
 import NotFound from './components/404-not-found/NotFound';
+import CreateJobVacancyPage from './pages/dashboard-page/CreateJobVacancyPage';
 import { GlobalProvider } from './context/GlobalContext';
 import { Routes, Route } from 'react-router-dom';
 
@@ -31,6 +32,10 @@ const App = () => {
             <Route
               path="/dashboard/list-job-vacancy"
               element={<TableDataPage />}
+            />
+            <Route
+              path="/dashboard/list-job-vacancy/form"
+              element={<CreateJobVacancyPage />}
             />
             <Route path="/" element={<LandingPage />} />
             <Route path="/home" element={<LandingPage />} />

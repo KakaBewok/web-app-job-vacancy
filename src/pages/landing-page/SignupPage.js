@@ -11,7 +11,7 @@ const SignupPage = () => {
 
   const HandleRegister = async (user) => {
     try {
-      const { error, data } = await register(user);
+      const { error } = await register(user);
       if (!error) {
         Swal.fire('Success', 'Registration success!', 'success');
         navigate('/login');

@@ -1,9 +1,12 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../../context/GlobalContext';
 import Cookies from 'js-cookie';
 import { Spinner } from 'flowbite-react';
 import Filter from '../../components/landing-page/Filter';
+import { getJob } from '../../utils/api-data';
+import { useNavigate } from 'react-router-dom';
 
 const ContentDashboard = ({
   jobs,
@@ -14,14 +17,18 @@ const ContentDashboard = ({
   keywordFilterCompanyChange,
   keywordFilterMinSalaryChange,
   filterData,
+  HandleDeleteJob,
 }) => {
+  const { setCurrentId, setInputJob } = useContext(GlobalContext);
+
+  const navigate = useNavigate();
+
   const rupiah = (number) => {
     return new Intl.NumberFormat('id-ID', {
       style: 'currency',
       currency: 'IDR',
     }).format(number);
   };
-
   const jobListSearch = jobs.filter((job) => {
     return (
       job.title.toUpperCase().includes(keyword.toUpperCase()) ||
@@ -40,6 +47,69 @@ const ContentDashboard = ({
       ? job.salary_min > -1
       : job.salary_min == filterData.filterMinSalary;
   });
+  const HandleEdit = async (event) => {
+    event.preventDefault();
+
+    let id = event.target.value;
+
+    setCurrentId(id);
+
+    try {
+      const { error, data } = await getJob(id);
+
+      if (!error) {
+        const {
+          title,
+          job_description,
+          job_qualification,
+          job_type,
+          job_tenure,
+          job_status,
+          company_name,
+          company_image_url,
+          company_city,
+          salary_min,
+          salary_max,
+        } = data.data;
+
+        setInputJob(() => {
+          return {
+            title,
+            job_description,
+            job_qualification,
+            job_type,
+            job_tenure,
+            job_status,
+            company_name,
+            company_image_url,
+            company_city,
+            salary_min,
+            salary_max,
+          };
+        });
+
+        navigate('/dashboard/list-job-vacancy/form');
+      }
+    } catch (error) {
+      alert(error.message);
+      console.log(error.message);
+    }
+  };
+  const HandleDelete = (event) => {
+    event.preventDefault();
+
+    let id = event.target.value;
+
+    try {
+      const response = HandleDeleteJob(id);
+      console.log(response);
+
+      navigate('/dashboard/list-job-vacancy');
+    } catch (error) {
+      alert(error.message);
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="h-screen px-4 pb-24 overflow-auto md:px-6">
@@ -89,8 +159,10 @@ const ContentDashboard = ({
               />
             </div>
           </div>
-
           {/* Table data and Pagination */}
+          <h2 className="text-gray-700 text-md">
+            Number of Jobs: {jobs.length}
+          </h2>
           <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
             <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
               {loading.isLoading ? (
@@ -289,10 +361,18 @@ const ContentDashboard = ({
                           {/* Action*/}
                           <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                             <div className="flex items-center justify-center gap-3">
-                              <button className="btn btn-link capitalize">
+                              <button
+                                className="btn btn-link capitalize"
+                                onClick={HandleEdit}
+                                value={job.id}
+                              >
                                 Edit
                               </button>
-                              <button className="btn btn-error text-white hover:bg-red-500 capitalize">
+                              <button
+                                className="btn btn-error text-white hover:bg-red-500 capitalize"
+                                onClick={HandleDelete}
+                                value={job.id}
+                              >
                                 Delete
                               </button>
                             </div>
@@ -400,10 +480,18 @@ const ContentDashboard = ({
                           {/* Action*/}
                           <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                             <div className="flex items-center justify-center gap-3">
-                              <button className="btn btn-link capitalize">
+                              <button
+                                className="btn btn-link capitalize"
+                                onClick={HandleEdit}
+                                value={job.id}
+                              >
                                 Edit
                               </button>
-                              <button className="btn btn-error text-white hover:bg-red-500 capitalize">
+                              <button
+                                className="btn btn-error text-white hover:bg-red-500 capitalize"
+                                onClick={HandleDelete}
+                                value={job.id}
+                              >
                                 Delete
                               </button>
                             </div>

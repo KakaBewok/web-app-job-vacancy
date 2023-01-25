@@ -6,7 +6,9 @@ import SideBar from '../../components/dashboard/SideBar';
 import NavSideBar from '../../components/dashboard/NavSideBar';
 import ContentDashboard from '../../components/dashboard/ContentDashboard';
 import Footer from '../../components/landing-page/Footer';
-import { getAllJob } from '../../utils/api-data';
+import { getAllJob, deleteJob } from '../../utils/api-data';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const TableDataPage = () => {
   const {
@@ -36,6 +38,25 @@ const TableDataPage = () => {
 
     FetchData();
   }, []);
+
+  const HandleDeleteJob = async (id) => {
+    try {
+      const { error } = await deleteJob(id);
+
+      if (!error) {
+        Swal.fire('Success', 'Delete data success!', 'success');
+        window.location = '/dashboard/list-job-vacancy';
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Delete job failed!',
+        footer: 'Please try again!',
+      });
+      console.log(error.message);
+    }
+  };
 
   const onKeywordSearchChangeHandler = (keyword) => {
     setKeyword(keyword);
@@ -69,9 +90,33 @@ const TableDataPage = () => {
                 onKeywordFilterMinSalaryChangeHandler
               }
               filterData={filterData}
+              HandleDeleteJob={HandleDeleteJob}
             />
           </div>
         </div>
+        {/* Add button */}
+        <Link to="/dashboard/list-job-vacancy/form">
+          <a href="#" className=" w-6 h-6 fixed left-3 top-[90%] lg:hidden">
+            <button className="btn btn-circle bg-purple-700">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-plus"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#ffffff"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+          </a>
+        </Link>
       </main>
       <div>
         <Footer />

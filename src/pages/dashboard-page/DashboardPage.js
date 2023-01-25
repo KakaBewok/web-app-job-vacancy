@@ -2,7 +2,7 @@
 import React from 'react';
 import SideBar from '../../components/dashboard/SideBar';
 import NavSideBar from '../../components/dashboard/NavSideBar';
-// import ContentSideBar from '../../components/dashbord/ContentSideBar';
+import GreetingDashboard from '../../components/dashboard/GreetingDashboard';
 import Footer from '../../components/landing-page/Footer';
 
 const DashboardPage = () => {
@@ -13,7 +13,7 @@ const DashboardPage = () => {
           <SideBar />
           <div className="flex flex-col w-full md:space-y-4">
             <NavSideBar />
-            {/* <ContentSideBar /> */}
+            <GreetingDashboard />
           </div>
         </div>
       </main>

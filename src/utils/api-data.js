@@ -2,7 +2,6 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const BASE_URL = 'https://dev-example.sanbercloud.com/api';
-// const BASE_URL = 'job-vacancy.json';
 
 // GET, CREATE & REMOVE TOKEN
 const getAccessToken = () => {
@@ -94,7 +93,7 @@ const addJob = async ({
     },
     {
       headers: {
-        Authorization: 'Bearer ' + Cookies.get('accessToken'),
+        Authorization: 'Bearer ' + Cookies.get('token'),
       },
     }
   );
@@ -126,10 +125,55 @@ const getJob = async (id) => {
   return { error: false, data: response };
 };
 // UPDATE
-// --------------------------------
+const editJob = async ({
+  currentId,
+  title,
+  job_description,
+  job_qualification,
+  job_type,
+  job_tenure,
+  job_status,
+  company_name,
+  company_image_url,
+  company_city,
+  salary_min,
+  salary_max,
+}) => {
+  const response = await axios.put(
+    `${BASE_URL}/job-vacancy/${currentId}`,
+    {
+      title,
+      job_description,
+      job_qualification,
+      job_type,
+      job_tenure,
+      job_status,
+      company_name,
+      company_image_url,
+      company_city,
+      salary_min,
+      salary_max,
+    },
+    {
+      headers: {
+        Authorization: 'Bearer ' + Cookies.get('token'),
+      },
+    }
+  );
+
+  if (response.code === 400) {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: response };
+};
 // DELETE
 const deleteJob = async (id) => {
-  const response = await axios.delete(`${BASE_URL}/job-vacancy/${id}`);
+  const response = await axios.delete(`${BASE_URL}/job-vacancy/${id}`, {
+    headers: {
+      Authorization: 'Bearer ' + Cookies.get('token'),
+    },
+  });
 
   if (response === 404) {
     return { error: true, data: null };
@@ -148,5 +192,6 @@ export {
   addJob,
   getAllJob,
   getJob,
+  editJob,
   deleteJob,
 };

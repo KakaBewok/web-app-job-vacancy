@@ -14,18 +14,14 @@ const LoginPage = () => {
     try {
       const { error, data } = await login(user);
       if (!error) {
-        Swal.fire('Success', 'Login success!', 'success');
-
         let { token, user } = data.data;
 
         Cookies.set('token', token, { expires: 3 });
         Cookies.set('image_url', user.image_url, { expires: 3 });
         Cookies.set('name', user.name, { expires: 3 });
 
-        console.log(user);
-
         navigate('/dashbord');
-        window.location = '/dashbord';
+        window.location = '/dashboard';
       }
     } catch (error) {
       Swal.fire({

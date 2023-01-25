@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-// import useInput from '../hooks/useInput';
 import { useSearchParams } from 'react-router-dom';
 
 export const GlobalContext = React.createContext();
@@ -37,6 +36,21 @@ export const GlobalProvider = (props) => {
       filterMinSalary: '',
     };
   });
+  const [inputJob, setInputJob] = React.useState(() => {
+    return {
+      title: '',
+      job_description: '',
+      job_qualification: '',
+      job_type: '',
+      job_tenure: '',
+      job_status: '',
+      company_name: '',
+      company_image_url: '',
+      company_city: '',
+      salary_min: '',
+      salary_max: '',
+    };
+  });
 
   const objState = React.useMemo(() => {
     return {
@@ -60,6 +74,8 @@ export const GlobalProvider = (props) => {
       setInputSignup,
       job,
       setJob,
+      inputJob,
+      setInputJob,
     };
   }, [
     authedUser,
@@ -72,6 +88,7 @@ export const GlobalProvider = (props) => {
     isLoading,
     inputLogin,
     inputSignup,
+    inputJob,
   ]);
 
   return (

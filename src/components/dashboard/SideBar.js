@@ -5,6 +5,8 @@ import { AiOutlineFileAdd } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { FiLogOut } from 'react-icons/fi';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
+import { BsChatDots } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
@@ -69,6 +71,30 @@ const SideBar = () => {
               </a>
             </Link>
             <hr />
+            {/* About */}
+            <Link to="/about">
+              <a
+                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800"
+                href="#"
+              >
+                <span className="text-left">
+                  <AiOutlineInfoCircle />
+                </span>
+                <span className="mx-2 text-sm font-normal">About</span>
+              </a>
+            </Link>
+            {/* Contact */}
+            <Link to="/contact">
+              <a
+                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800"
+                href="#"
+              >
+                <span className="text-left">
+                  <BsChatDots />
+                </span>
+                <span className="mx-2 text-sm font-normal">Contact</span>
+              </a>
+            </Link>
             {/* Profile */}
             <Link to="/profile">
               <a

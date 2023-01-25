@@ -102,24 +102,26 @@ const Footer = () => {
         </div>
       </div>
       <a href="#" className="animate-bounce w-6 h-6 fixed right-10 top-[90%]">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-arrow-up-circle"
-          width="40"
-          height="40"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="#00abfb"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <circle cx="12" cy="12" r="9" />
-          <line x1="12" y1="8" x2="8" y2="12" />
-          <line x1="12" y1="8" x2="12" y2="16" />
-          <line x1="16" y1="12" x2="12" y2="8" />
-        </svg>
+        <button className="btn btn-circle bg-purple-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-arrow-up-circle"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="#FFFFFF"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <circle cx="12" cy="12" r="9" />
+            <line x1="12" y1="8" x2="8" y2="12" />
+            <line x1="12" y1="8" x2="12" y2="16" />
+            <line x1="16" y1="12" x2="12" y2="8" />
+          </svg>
+        </button>
       </a>
       <div>
         <p>Copyright © 2023 - All right reserved by Noprizal</p>

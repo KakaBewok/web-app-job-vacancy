@@ -29,11 +29,11 @@ const SignupPage = () => {
   };
 
   return (
-    <div>
+    <div className="dark:bg-gray-700">
       <div className="fixed top-0 left-0 right-0 ">
         <NavigationBar />
       </div>
-      <div className="mt-[7rem] md:mt-[10rem]">
+      <div className="pt-[7rem] md:pt-[10rem]">
         <Signup handleRegister={HandleRegister} />
       </div>
       <div className="mt-[5rem] md:mt-[9.5rem] min-[819px]:mt-[19rem] lg:mt-[6rem]">

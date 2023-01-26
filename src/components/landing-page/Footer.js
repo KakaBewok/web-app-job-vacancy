@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
-      <div className="grid grid-flow-col gap-4">
+    <footer className="footer footer-center p-10 bg-base-200 text-base-content dark:bg-gray-500 dark:text-gray-100">
+      <div className="grid grid-flow-col gap-4 ">
         <a
           className="link link-hover tooltip tooltip-top"
           data-tip="Under maintenance"
@@ -26,16 +26,16 @@ const Footer = () => {
         )}
       </div>
       <div>
-        <div className="grid grid-flow-col gap-4 ">
+        <div className="grid grid-flow-col gap-4">
           <a
             href="https://www.twitter.com/KkBwk"
             target="_blank"
             rel="noreferrer"
-            className="transition-all duration-300 hover:-translate-y-1"
+            className="transition-all duration-300 hover:-translate-y-1 "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-brand-twitter"
+              className="icon icon-tabler icon-tabler-brand-twitter dark:text-gray-100"
               width="28"
               height="28"
               viewBox="0 0 24 24"

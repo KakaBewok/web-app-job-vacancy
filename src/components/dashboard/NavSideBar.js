@@ -5,15 +5,15 @@ import Cookies from 'js-cookie';
 
 const NavSideBar = () => {
   return (
-    <header className="shadow-sm z-40 flex items-center justify-between w-full h-16">
+    <header className="shadow-sm z-40 flex items-center justify-between w-full h-16 dark:bg-gray-600">
       {/* Hamburger Menu */}
       <div
-        className="block ml-6 lg:hidden"
+        className="block ml-6 lg:hidden "
         onClick={() =>
           document.getElementById('sidebar-menu').classList.toggle('hidden')
         }
       >
-        <button className="flex items-center p-2 text-gray-500 bg-white rounded-full shadow text-md">
+        <button className="flex items-center p-2 text-gray-500 bg-white rounded-full shadow text-md dark:bg-gray-800">
           <svg
             width={20}
             height={20}
@@ -63,7 +63,7 @@ const NavSideBar = () => {
           {/* Detail Menu Profile */}
           <div
             id="detail-profile"
-            className="hidden absolute top-14 right-2 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-black ring-opacity-5"
+            className="hidden absolute top-14 right-2 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-700 ring-1 ring-black ring-opacity-5"
           >
             <div
               className="py-1 "

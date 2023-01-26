@@ -36,18 +36,18 @@ const Card = ({
 
   return (
     <div>
-      <div className="my-6 p-5 max-w-sm  cursor-pointer ">
-        {job_status ? (
-          <span className="px-4 py-2 text-base rounded-full text-green-600  bg-green-200 ">
-            Hiring
-          </span>
-        ) : (
-          <span className="px-4 py-2  text-base rounded-full text-red-600  bg-red-200 ">
-            Close
-          </span>
-        )}
+      <div className="my-6 p-5 max-w-sm  cursor-pointer">
         <Link to={`/job-vacancy/${id}`}>
-          <div className="overflow-hidden rounded-md shadow-lg p-6 transition-all duration-300 hover:-translate-y-2 hover:opacity-80">
+          {job_status ? (
+            <span className="px-4 py-2 text-base rounded-full text-green-600  bg-green-200">
+              Hiring
+            </span>
+          ) : (
+            <span className="px-4 py-2  text-base rounded-full text-red-600  bg-red-200 ">
+              Close
+            </span>
+          )}
+          <div className="overflow-hidden rounded-md shadow-lg p-6 transition-all duration-200  hover:opacity-50 dark:hover:bg-gray-800  dark:hover:opacity-100 dark:bg-gray-700 dark:text-gray-200">
             <a href="#" target="_blank">
               <img
                 src={company_image_url}
@@ -55,7 +55,9 @@ const Card = ({
                 className="rounded-md"
               />
             </a>
-            <h2 className="my-3 text-2xl font-bold text-sky-700">{title}</h2>
+            <h2 className="my-3 text-2xl font-bold text-sky-700 dark:text-gray-200">
+              {title}
+            </h2>
             <p className="my-3 text-md font-semibold flex">
               <FaRegBuilding className="mr-3 mt-1" />
               {company_name}

@@ -49,7 +49,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div>
+    <div className="dark:bg-gray-600">
       <NavigationBar />
       <Hero
         keyword={keyword}

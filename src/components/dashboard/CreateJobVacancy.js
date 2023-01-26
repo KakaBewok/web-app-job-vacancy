@@ -78,19 +78,19 @@ const CreateJobVacancy = ({
   };
 
   return (
-    <div>
-      <div className="mt-[1rem] mb-[4rem] mx-auto flex flex-col max-w-xs md:max-w-2xl px-4 py-8 bg-white rounded-lg shadow-lg dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+    <div className="pt-[8rem] pb-[5rem] dark:bg-gray-400">
+      <div className="mx-auto flex flex-col max-w-xs md:max-w-2xl px-4 py-8 bg-white rounded-lg shadow-lg dark:bg-gray-700 sm:px-6 md:px-8 lg:px-10">
         <div className="font-semibold self-center mb-2 text-xl text-purple-700 sm:text-2xl dark:text-white">
           Add & Edit Job Vacancies
         </div>
-        <div className="p-6 mt-1">
+        <div className="p-6 mt-1 ">
           <form className="flex flex-col gap-2" onSubmit={onSubmitJob}>
             {/* Position */}
             <div className="flex flex-col mb-2">
               <div>
                 <input
                   type="text"
-                  className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400  w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 rounded-lg border-transparent flex-1 appearance-none border border-gray-400  w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   name="title"
                   placeholder="Position"
                   value={inputJob.title}
@@ -104,7 +104,7 @@ const CreateJobVacancy = ({
               <div>
                 <input
                   type="text"
-                  className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400  w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 rounded-lg border-transparent flex-1 appearance-none border border-gray-400  w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Company"
                   name="company_name"
                   value={inputJob.company_name}
@@ -118,7 +118,7 @@ const CreateJobVacancy = ({
               <div>
                 <input
                   type="text"
-                  className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Company Image URL"
                   name="company_image_url"
                   value={inputJob.company_image_url}
@@ -132,7 +132,7 @@ const CreateJobVacancy = ({
               <div>
                 <input
                   type="text"
-                  className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400  w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 rounded-lg border-transparent flex-1 appearance-none border border-gray-400  w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Location"
                   name="company_city"
                   value={inputJob.company_city}
@@ -146,10 +146,10 @@ const CreateJobVacancy = ({
               <div>
                 <input
                   type="number"
-                  className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Minimum Salary"
                   name="salary_min"
-                  value={inputJob.salary_min}
+                  value={inputJob.salary_min < 0 ? 0 : inputJob.salary_min}
                   onChange={(event) => ChangeInputJobHandler(event)}
                   required
                 />
@@ -160,10 +160,10 @@ const CreateJobVacancy = ({
               <div>
                 <input
                   type="number"
-                  className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 rounded-lg border-transparent flex-1 appearance-none border border-gray-400 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Maximum Salary"
                   name="salary_max"
-                  value={inputJob.salary_max}
+                  value={inputJob.salary_max < 0 ? 0 : inputJob.salary_max}
                   onChange={(event) => ChangeInputJobHandler(event)}
                   required
                 />
@@ -173,7 +173,7 @@ const CreateJobVacancy = ({
             <div className="flex flex-col mb-2">
               <div>
                 <select
-                  className="block px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm  focus:outline-none focus:ring-primary-500 focus:border-primary-500 w-full"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 block px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm  focus:outline-none focus:ring-primary-500 focus:border-primary-500 w-full"
                   name="job_type"
                   onChange={(event) => ChangeInputJobHandler(event)}
                   value={inputJob.job_type}
@@ -198,7 +198,7 @@ const CreateJobVacancy = ({
             <div className="flex flex-col mb-2">
               <div>
                 <select
-                  className="block px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm  focus:outline-none focus:ring-primary-500 focus:border-primary-500 w-full"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 block px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm  focus:outline-none focus:ring-primary-500 focus:border-primary-500 w-full"
                   name="job_tenure"
                   onChange={(event) => ChangeInputJobHandler(event)}
                   value={inputJob.job_tenure}
@@ -229,7 +229,7 @@ const CreateJobVacancy = ({
             <div className="flex flex-col mb-2">
               <div>
                 <select
-                  className="block px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm  focus:outline-none focus:ring-primary-500 focus:border-primary-500 w-full"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 block px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm  focus:outline-none focus:ring-primary-500 focus:border-primary-500 w-full"
                   name="job_status"
                   onChange={(event) => ChangeInputJobHandler(event)}
                   value={inputJob.job_status}
@@ -251,7 +251,7 @@ const CreateJobVacancy = ({
             <div className="flex flex-col mb-2">
               <div>
                 <textarea
-                  className="textarea border-gray-400 max-h-48 min-h-[6rem] w-full"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 textarea border-gray-400 max-h-48 min-h-[6rem] w-full"
                   placeholder="Job Description"
                   maxLength={300}
                   onChange={(event) => ChangeInputJobHandler(event)}
@@ -265,7 +265,7 @@ const CreateJobVacancy = ({
             <div className="flex flex-col mb-2">
               <div>
                 <textarea
-                  className="textarea border-gray-400 max-h-48 min-h-[6rem] w-full"
+                  className="dark:bg-gray-400 dark:placeholder-gray-600 dark:text-gray-600 textarea border-gray-400 max-h-48 min-h-[6rem] w-full"
                   placeholder="Qualification"
                   maxLength={300}
                   name="job_qualification"

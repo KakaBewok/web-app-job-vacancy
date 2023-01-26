@@ -23,10 +23,10 @@ const CardDetail = ({ job }) => {
   const salaryMax = rupiah(job.salary_max);
 
   return (
-    <div>
-      <div className="mx-auto max-w-[90%] md:max-w-[70%] lg:max-w-[50%] overflow-hidden bg-white shadow-lg sm:rounded-lg">
+    <div className="dark:bg-gray-600 ">
+      <div className="rounded-lg mx-auto max-w-[90%] md:max-w-[70%] lg:max-w-[50%] overflow-hidden bg-white shadow-lg sm:rounded-lg">
         {/* HEADER */}
-        <div className="px-4 py-5 sm:px-6">
+        <div className="px-4 py-5 sm:px-6 dark:bg-gray-700">
           {job.company_image_url ? (
             <img
               className="rounded-md transition-all duration-300 hover:opacity-90"
@@ -45,9 +45,11 @@ const CardDetail = ({ job }) => {
         <div className="border-t border-gray-200">
           <dl>
             {/* 1 */}
-            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Position</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
+                Position
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {job.title ? (
                   job.title
                 ) : (
@@ -56,9 +58,11 @@ const CardDetail = ({ job }) => {
               </dd>
             </div>
             {/* 2 */}
-            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Description</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
+                Description
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {job.job_description ? (
                   job.job_description
                 ) : (
@@ -67,11 +71,11 @@ const CardDetail = ({ job }) => {
               </dd>
             </div>
             {/* 3 */}
-            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">
+            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
                 Qualification
               </dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {job.job_qualification ? (
                   job.job_qualification
                 ) : (
@@ -80,9 +84,11 @@ const CardDetail = ({ job }) => {
               </dd>
             </div>
             {/* 4 */}
-            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Type</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
+                Type
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {job.job_type ? (
                   job.job_type
                 ) : (
@@ -91,9 +97,11 @@ const CardDetail = ({ job }) => {
               </dd>
             </div>
             {/* 5 */}
-            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Tenure</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
+                Tenure
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {job.job_tenure ? (
                   job.job_tenure
                 ) : (
@@ -102,16 +110,20 @@ const CardDetail = ({ job }) => {
               </dd>
             </div>
             {/* 6 */}
-            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Status</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
+                Status
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {checkJobStatus(job.job_status)}
               </dd>
             </div>
             {/* 7 */}
-            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Company</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
+                Company
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {job.company_name ? (
                   job.company_name
                 ) : (
@@ -120,9 +132,11 @@ const CardDetail = ({ job }) => {
               </dd>
             </div>
             {/* 8 */}
-            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Location</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
+                Location
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {job.company_city ? (
                   job.company_city
                 ) : (
@@ -131,9 +145,11 @@ const CardDetail = ({ job }) => {
               </dd>
             </div>
             {/* 9 */}
-            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Salary</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <div className="px-4 py-5 bg-gray-100 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
+                Salary
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {job.salary_min && job.salary_max ? (
                   <div>
                     {salaryMin} - {salaryMax}
@@ -144,9 +160,11 @@ const CardDetail = ({ job }) => {
               </dd>
             </div>
             {/* 10 */}
-            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Post time</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-700">
+              <dt className="text-sm font-medium text-gray-500 dark:text-gray-100">
+                Post time
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-400">
                 {job.updated_at ? (
                   job.updated_at
                 ) : (

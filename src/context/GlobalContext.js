@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export const GlobalContext = React.createContext();
 
@@ -57,9 +58,18 @@ export const GlobalProvider = (props) => {
       salary_max: '',
     };
   });
+  const [theme, setTheme] = React.useState(() => {
+    return Cookies.get('theme') || 'light';
+  });
+
+  // useEffect(() => {
+  //   document.documentElement.classList.toggle('dark');
+  // }, [theme]);
 
   const objState = React.useMemo(() => {
     return {
+      theme,
+      setTheme,
       inputChangePassword,
       setInputChangePassword,
       jobs,
@@ -84,6 +94,7 @@ export const GlobalProvider = (props) => {
       setInputJob,
     };
   }, [
+    theme,
     inputChangePassword,
     jobs,
     job,

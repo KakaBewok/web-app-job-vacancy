@@ -7,10 +7,10 @@ const Filter = ({
 }) => {
   return (
     <div>
-      <div className="form-control select-sm max-w-xs mt-5 mx-auto mb-[10rem] md:mb-[2rem]">
-        <div className="flex flex-col gap-2 md:flex md:flex-row md:justify-center mb-5">
+      <div className="form-control select-sm max-w-xs mt-5 mx-auto mb-[10rem] md:mb-[2rem] ">
+        <div className="flex flex-col gap-2 md:flex md:flex-row md:justify-center mb-5 ">
           <select
-            className="select select-bordered text-sm"
+            className="select select-bordered text-sm dark:bg-gray-700 dark:text-gray-400"
             onChange={(event) => keywordFilterCityChange(event.target.value)}
           >
             <option value="" className="font-bold">
@@ -30,7 +30,7 @@ const Filter = ({
           </select>
 
           <select
-            className="select select-bordered text-sm "
+            className="select select-bordered text-sm dark:bg-gray-700 dark:text-gray-400"
             onChange={(event) => keywordFilterCompanyChange(event.target.value)}
           >
             <option value="" className="font-bold">
@@ -50,7 +50,7 @@ const Filter = ({
           </select>
 
           <select
-            className="select select-bordered text-sm "
+            className="select select-bordered text-sm dark:bg-gray-700 dark:text-gray-400"
             onChange={(event) =>
               keywordFilterMinSalaryChange(event.target.value)
             }

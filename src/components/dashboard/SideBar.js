@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../../context/GlobalContext';
 import { BsTable } from 'react-icons/bs';
 import { AiOutlineFileAdd } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
@@ -10,8 +11,11 @@ import { BsChatDots } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { Spinner } from 'flowbite-react';
+import ToggleTheme from '../landing-page/ToggleTheme';
 
 const SideBar = () => {
+  const { theme } = useContext(GlobalContext);
+
   return (
     <div
       className="relative hidden h-screen shadow-lg lg:block w-80"
@@ -27,9 +31,18 @@ const SideBar = () => {
         {/* Menu sidebar */}
         <nav className="mt-6">
           <div>
+            <a
+              className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 hover:text-gray-700 border-white dark:border-gray-700 dark:text-gray-400 dark:hover:text-white"
+              href="#"
+            >
+              <ToggleTheme />
+              <span className="mx-2 text-sm font-normal">
+                {theme === 'light' ? 'Good Morning :)' : 'Good night :)'}
+              </span>
+            </a>
             {/* Home */}
             {window.location.href === 'http://localhost:3000/dashboard' ? (
-              <Link to="/">
+              <Link to="/dashboard">
                 <a
                   className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-800 transition-colors duration-200 border-l-4 border-purple-500 dark:text-white"
                   href="#"
@@ -49,9 +62,9 @@ const SideBar = () => {
                 </a>
               </Link>
             ) : (
-              <Link to="/">
+              <Link to="/dashboard">
                 <a
-                  className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-white dark:text-white"
+                  className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 hover:text-gray-700 border-white dark:border-gray-700 dark:text-gray-400 dark:hover:text-white"
                   href="#"
                 >
                   <span className="text-left">
@@ -86,7 +99,7 @@ const SideBar = () => {
             ) : (
               <Link to="/dashboard/list-job-vacancy">
                 <a
-                  className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800"
+                  className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800 dark:hover:text-white"
                   href="#"
                 >
                   <span className="text-left">
@@ -99,7 +112,7 @@ const SideBar = () => {
             {/* Add data */}
             <Link to="/dashboard/list-job-vacancy/form">
               <a
-                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800"
+                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800 dark:hover:text-white"
                 href="#"
               >
                 <span className="text-left">
@@ -108,11 +121,11 @@ const SideBar = () => {
                 <span className="mx-2 text-sm font-normal">Add Data</span>
               </a>
             </Link>
-            <hr />
+            <hr className="dark:border-gray-800" />
             {/* About */}
             <Link to="/about">
               <a
-                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800"
+                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800 dark:hover:text-white"
                 href="#"
               >
                 <span className="text-left">
@@ -124,7 +137,7 @@ const SideBar = () => {
             {/* Contact */}
             <Link to="/contact-us">
               <a
-                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800"
+                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800 dark:hover:text-white"
                 href="#"
               >
                 <span className="text-left">
@@ -136,7 +149,7 @@ const SideBar = () => {
             {/* Profile */}
             <Link to="/profile">
               <a
-                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800"
+                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800 dark:hover:text-white"
                 href="#"
               >
                 <span className="text-left">
@@ -148,7 +161,7 @@ const SideBar = () => {
             {/* Change password */}
             <Link to="/profile/change-password">
               <a
-                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800"
+                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800 dark:hover:text-white"
                 href="#"
               >
                 <span className="text-left">
@@ -172,7 +185,7 @@ const SideBar = () => {
               }}
             >
               <a
-                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800"
+                className="flex items-center justify-start w-full p-2 pl-6 my-2 text-gray-400 transition-colors duration-200 border-l-4 border-transparent hover:text-gray-800 dark:hover:text-white"
                 href="#"
               >
                 <span className="text-left">

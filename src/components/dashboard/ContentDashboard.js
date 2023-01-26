@@ -128,7 +128,7 @@ const ContentDashboard = ({
           <div>
             {/* Search */}
             <div className="flex flex-col sm:flex-row justify-between w-full mb-1 sm:mb-0">
-              <h2 className="hidden sm:block text-3xl font-semibold leading-tight">
+              <h2 className="hidden sm:block text-3xl font-semibold leading-tight dark:text-gray-200">
                 Job Lists
               </h2>
               <div className="text-end">
@@ -137,7 +137,7 @@ const ContentDashboard = ({
                     <input
                       type="text"
                       id='"form-subscribe-Filter'
-                      className=" rounded-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      className="dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400 dark:border-gray-600 rounded-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                       placeholder="Search"
                       value={keyword}
                       onChange={(event) =>
@@ -160,7 +160,7 @@ const ContentDashboard = ({
             </div>
           </div>
           {/* Table data and Pagination */}
-          <h2 className="text-gray-700 text-md">
+          <h2 className="text-gray-700 text-md dark:text-gray-400">
             Number of Jobs: {jobs.length}
           </h2>
           <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
@@ -177,84 +177,84 @@ const ContentDashboard = ({
                       {/* Company */}
                       <th
                         scope="col"
-                        className="px-5 py-7 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-7 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Company
                       </th>
                       {/* Position */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold  text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold  text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Position
                       </th>
                       {/* Create At */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Created at
                       </th>
                       {/* Status */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Status
                       </th>
                       {/* Tenure */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Tenure
                       </th>
                       {/* City */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         City
                       </th>
                       {/* Min. Salary */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Min. Salary
                       </th>
                       {/* Max. Salary */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Max. Salary
                       </th>
                       {/* Job Desc. */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Job Desc.
                       </th>
                       {/* Qualification */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Qualification
                       </th>
                       {/* Type */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Type
                       </th>
                       {/* Action */}
                       <th
                         scope="col"
-                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200"
+                        className="px-5 py-3 text-xs font-semibold text-gray-800 uppercase bg-gray-200 text-center border-b border-gray-200 dark:bg-gray-600 dark:text-gray-200"
                       >
                         Action
                       </th>
@@ -266,7 +266,7 @@ const ContentDashboard = ({
                       {jobListSearch.map((job) => (
                         <tr key={job.id}>
                           {/* Company */}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700 ">
                             <div className="flex items-center">
                               <div className="flex-shrink-0">
                                 <a href="#" className="relative block">
@@ -278,98 +278,102 @@ const ContentDashboard = ({
                                 </a>
                               </div>
                               <div className="ml-5 w-40">
-                                <p className="text-gray-900 whitespace-no-wrap">
+                                <p className="text-gray-900 whitespace-no-wrap dark:text-gray-100">
                                   {job.company_name}
                                 </p>
                               </div>
                             </div>
                           </td>
                           {/* Position */}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {job.title}
                             </p>
                           </td>
                           {/* Created at */}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {job.updated_at}
                             </p>
                           </td>
                           {/* Status */}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
                             {job.job_status ? (
-                              <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
+                              <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900 ">
                                 <span
                                   aria-hidden="true"
-                                  className="absolute inset-0 bg-green-200 rounded-full opacity-50"
+                                  className="absolute inset-0 bg-green-200 dark:bg-green-500 rounded-full opacity-50"
                                 ></span>
-                                <span className="relative">hiring</span>
+                                <span className="relative dark:text-gray-100">
+                                  hiring
+                                </span>
                               </span>
                             ) : (
                               <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-red-900">
                                 <span
                                   aria-hidden="true"
-                                  className="absolute inset-0 bg-red-200 rounded-full opacity-50"
+                                  className="absolute inset-0 bg-red-200 dark:bg-red-500 rounded-full opacity-50"
                                 ></span>
-                                <span className="relative">close</span>
+                                <span className="relative dark:text-gray-100">
+                                  close
+                                </span>
                               </span>
                             )}
                           </td>
                           {/* Tenure*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-16">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-16 dark:text-gray-100">
                               {job.job_tenure}
                             </p>
                           </td>
                           {/* City*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {job.company_city}
                             </p>
                           </td>
                           {/* Min. salary*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {rupiah(job.salary_min)}
                             </p>
                           </td>
                           {/* Max. salary*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {rupiah(job.salary_max)}
                             </p>
                           </td>
                           {/* Job Desc*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 ">
-                            <p className="text-gray-900 whitespace-no-wrap w-[50rem]">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-[50rem] dark:text-gray-100">
                               {job.job_description}
                             </p>
                           </td>
                           {/* Job qualification*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-[50rem]">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-[50rem] dark:text-gray-100">
                               {job.job_qualification}
                             </p>
                           </td>
                           {/* Job type*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-20">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-20 dark:text-gray-100">
                               {job.job_type}
                             </p>
                           </td>
                           {/* Action*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <div className="flex items-center justify-center gap-3">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <div className="flex items-center justify-center gap-3 dark:text-gray-100">
                               <button
-                                className="btn btn-link capitalize"
+                                className="btn btn-ghost capitalize dark:text-gray-100"
                                 onClick={HandleEdit}
                                 value={job.id}
                               >
                                 Edit
                               </button>
                               <button
-                                className="btn btn-error text-white hover:bg-red-500 capitalize"
+                                className="btn btn-error text-white hover:bg-red-500 capitalize dark:bg-red-700"
                                 onClick={HandleDelete}
                                 value={job.id}
                               >
@@ -385,7 +389,7 @@ const ContentDashboard = ({
                       {jobListFilter.map((job) => (
                         <tr key={job.id}>
                           {/* Company */}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700 ">
                             <div className="flex items-center">
                               <div className="flex-shrink-0">
                                 <a href="#" className="relative block">
@@ -397,91 +401,95 @@ const ContentDashboard = ({
                                 </a>
                               </div>
                               <div className="ml-5 w-40">
-                                <p className="text-gray-900 whitespace-no-wrap">
+                                <p className="text-gray-900 whitespace-no-wrap dark:text-gray-100">
                                   {job.company_name}
                                 </p>
                               </div>
                             </div>
                           </td>
                           {/* Position */}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {job.title}
                             </p>
                           </td>
                           {/* Created at */}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {job.updated_at}
                             </p>
                           </td>
                           {/* Status */}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
                             {job.job_status ? (
-                              <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
+                              <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900 ">
                                 <span
                                   aria-hidden="true"
-                                  className="absolute inset-0 bg-green-200 rounded-full opacity-50"
+                                  className="absolute inset-0 bg-green-200 dark:bg-green-500 rounded-full opacity-50"
                                 ></span>
-                                <span className="relative">hiring</span>
+                                <span className="relative dark:text-gray-100">
+                                  hiring
+                                </span>
                               </span>
                             ) : (
                               <span className="relative inline-block px-3 py-1 font-semibold leading-tight text-red-900">
                                 <span
                                   aria-hidden="true"
-                                  className="absolute inset-0 bg-red-200 rounded-full opacity-50"
+                                  className="absolute inset-0 bg-red-200 dark:bg-red-500 rounded-full opacity-50"
                                 ></span>
-                                <span className="relative">close</span>
+                                <span className="relative dark:text-gray-100">
+                                  close
+                                </span>
                               </span>
                             )}
                           </td>
                           {/* Tenure*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-16">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-16 dark:text-gray-100">
                               {job.job_tenure}
                             </p>
                           </td>
                           {/* City*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {job.company_city}
                             </p>
                           </td>
                           {/* Min. salary*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {rupiah(job.salary_min)}
                             </p>
                           </td>
                           {/* Max. salary*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-24">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-24 dark:text-gray-100">
                               {rupiah(job.salary_max)}
                             </p>
                           </td>
                           {/* Job Desc*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 ">
-                            <p className="text-gray-900 whitespace-no-wrap w-[50rem]">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-[50rem] dark:text-gray-100">
                               {job.job_description}
                             </p>
                           </td>
                           {/* Job qualification*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-[50rem]">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-[50rem] dark:text-gray-100">
                               {job.job_qualification}
                             </p>
                           </td>
                           {/* Job type*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p className="text-gray-900 whitespace-no-wrap w-20">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <p className="text-gray-900 whitespace-no-wrap w-20 dark:text-gray-100">
                               {job.job_type}
                             </p>
                           </td>
                           {/* Action*/}
-                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <div className="flex items-center justify-center gap-3">
+                          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 dark:bg-gray-700">
+                            <div className="flex items-center justify-center gap-3 dark:text-gray-100">
                               <button
-                                className="btn btn-link capitalize"
+                                className="btn btn-ghost capitalize dark:text-gray-100"
                                 onClick={HandleEdit}
                                 value={job.id}
                               >
@@ -504,7 +512,7 @@ const ContentDashboard = ({
               )}
               {/* Pagination */}
               <div
-                className="flex flex-col items-center px-5 py-5 bg-white xs:flex-row xs:justify-between tooltip tooltip-top"
+                className="flex flex-col items-center px-5 py-5 bg-white xs:flex-row xs:justify-between tooltip tooltip-top dark:bg-gray-600"
                 data-tip="Under maintenance"
               >
                 <div className="flex items-center">

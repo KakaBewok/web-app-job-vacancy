@@ -26,7 +26,7 @@ const CardDetailPage = () => {
       <div className="fixed top-0 left-0 right-0 z-50">
         <NavigationBar />
       </div>
-      <div className="mt-24 mb-10 ">
+      <div className="pt-32 pb-10 dark:bg-gray-600 ">
         <CardDetail job={job} />
       </div>
       <div>

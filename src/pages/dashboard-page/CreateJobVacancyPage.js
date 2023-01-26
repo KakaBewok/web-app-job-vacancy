@@ -63,7 +63,7 @@ const CreateJobVacancyPage = () => {
       <div className="fixed top-0 left-0 right-0 ">
         <NavigationBar />
       </div>
-      <div className="mt-[7rem] md:mt-[10rem]">
+      <div>
         <CreateJobVacancy
           inputJob={inputJob}
           setInputJob={setInputJob}
@@ -74,7 +74,7 @@ const CreateJobVacancyPage = () => {
           setCurrentId={setCurrentId}
         />
       </div>
-      <div className="mt-[5rem] md:mt-[9.5rem] min-[819px]:mt-[19rem] lg:mt-[6rem]">
+      <div>
         <Footer />
       </div>
     </div>

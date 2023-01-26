@@ -40,7 +40,7 @@ const Login = ({ handleLogin }) => {
   };
 
   return (
-    <div className=" mx-auto flex flex-col max-w-xs md:max-w-md px-4 py-8 bg-white rounded-lg shadow-lg dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+    <div className=" mx-auto flex flex-col max-w-xs md:max-w-md px-4 py-8 bg-white rounded-lg shadow-lg dark:bg-gray-600 sm:px-6 md:px-8 lg:px-10">
       <div className="font-semibold self-center mb-1 text-xl  text-gray-600 sm:text-2xl dark:text-white">
         Login to Loker.id
       </div>

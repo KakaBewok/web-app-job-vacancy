@@ -10,6 +10,7 @@ import CardDetailPage from './pages/landing-page/DetailPage';
 import ChangePasswordPage from './pages/dashboard-page/ChangePasswordPage';
 import NotFound from './components/404-not-found/NotFound';
 import CreateJobVacancyPage from './pages/dashboard-page/CreateJobVacancyPage';
+import ProfilePage from './pages/dashboard-page/ProfilePage';
 import { GlobalProvider } from './context/GlobalContext';
 import { Routes, Route } from 'react-router-dom';
 import ContactUsPage from './pages/landing-page/ContactUsPage';
@@ -44,12 +45,13 @@ const App = () => {
             <Route path="/home" element={<LandingPage />} />
             <Route path="/job-vacancy/:id" element={<CardDetailPage />} />
 
-            <Route path="/profile" element={<h1>Ini profile</h1>} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route
               path="/profile/change-password"
               element={<ChangePasswordPage />}
             />
             <Route path="/contact-us" element={<ContactUsPage />} />
+            <Route path="/about" element={<h1>About</h1>} />
 
             <Route path="/*" element={<NotFound />} />
           </Routes>

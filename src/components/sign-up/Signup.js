@@ -54,7 +54,7 @@ const Signup = ({ handleRegister }) => {
 
   return (
     <div>
-      <div className=" mb-[4rem] mx-auto flex flex-col max-w-xs md:max-w-md px-4 py-8 bg-white rounded-lg shadow-lg dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+      <div className=" mb-[4rem] mx-auto flex flex-col max-w-xs md:max-w-md px-4 py-8 bg-white rounded-lg shadow-lg dark:bg-gray-600 sm:px-6 md:px-8 lg:px-10">
         <div className="font-semibold self-center mb-2 text-xl text-gray-800 sm:text-2xl dark:text-white">
           Create a new account
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactUs = () => {
   return (
-    <form className="mx-auto flex w-full max-w-xs md:max-w-xl space-x-3">
+    <form className="mx-auto flex w-full max-w-xs md:max-w-xl space-x-3 ">
       <div className="w-full max-w-2xl px-6 py-10 m-auto mt-10 bg-white rounded-lg shadow-lg dark:bg-gray-800">
         {/* Title */}
         <div className="mb-6 text-2xl font-normal text-center text-gray-800 dark:text-white">

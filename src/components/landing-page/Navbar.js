@@ -3,13 +3,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { Spinner } from 'flowbite-react';
+import ToggleTheme from './ToggleTheme';
 
 const NavigationBar = () => {
   return (
-    <div className="navbar bg-base-100 px-6 py-3 fixed z-50 shadow-md">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+    <div className="navbar bg-base-100 px-6 py-3 fixed z-50 shadow-md dark:bg-gray-700 dark:text-gray-100">
+      <div className="navbar-start ">
+        <div className="dropdown ">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -27,8 +28,11 @@ const NavigationBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 dark:bg-gray-800 dark:text-gray-100"
           >
+            <li>
+              <ToggleTheme />
+            </li>
             <li className="tooltip tooltip-top" data-tip="Under maintenance">
               <a>About</a>
             </li>
@@ -51,7 +55,10 @@ const NavigationBar = () => {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex ">
-        <ul className="menu menu-horizontal px-1 ">
+        <ul className="menu menu-horizontal px-1 dark:bg-gray-700 dark:text-gray-100">
+          <li>
+            <ToggleTheme />
+          </li>
           <li
             className="tooltip tooltip-top lg:tooltip-bottom"
             data-tip="Under maintenance"
@@ -120,7 +127,7 @@ const NavigationBar = () => {
             </div>
             <div
               id="detail-profile"
-              className="hidden absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-black ring-opacity-5"
+              className="hidden absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-black ring-opacity-5 "
             >
               <div
                 className="py-1 "
@@ -184,7 +191,6 @@ const NavigationBar = () => {
               </div>
             </div>
           </div>
-          // </button>
         )}
       </div>
     </div>

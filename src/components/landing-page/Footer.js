@@ -13,12 +13,10 @@ const Footer = () => {
         >
           About us
         </a>
-        <a
-          className="link link-hover tooltip tooltip-top"
-          data-tip="Under maintenance"
-        >
-          Contact Us
-        </a>
+        <Link to="/contact-us">
+          <a className="link link-hover">Contact Us</a>
+        </Link>
+
         {!Cookies.get('token') ? (
           <div></div>
         ) : (

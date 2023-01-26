@@ -7,10 +7,12 @@ import LandingPage from './pages/landing-page/LandingPage';
 import Login from './pages/landing-page/LoginPage';
 import SignupPage from './pages/landing-page/SignupPage';
 import CardDetailPage from './pages/landing-page/DetailPage';
+import ChangePasswordPage from './pages/dashboard-page/ChangePasswordPage';
 import NotFound from './components/404-not-found/NotFound';
 import CreateJobVacancyPage from './pages/dashboard-page/CreateJobVacancyPage';
 import { GlobalProvider } from './context/GlobalContext';
 import { Routes, Route } from 'react-router-dom';
+import ContactUsPage from './pages/landing-page/ContactUsPage';
 
 const App = () => {
   return (
@@ -24,6 +26,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/dashbord" element={<Login />} />
+            <Route path="/contact-us" element={<ContactUsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         ) : (
@@ -44,8 +47,9 @@ const App = () => {
             <Route path="/profile" element={<h1>Ini profile</h1>} />
             <Route
               path="/profile/change-password"
-              element={<h1>Ini change-password</h1>}
+              element={<ChangePasswordPage />}
             />
+            <Route path="/contact-us" element={<ContactUsPage />} />
 
             <Route path="/*" element={<NotFound />} />
           </Routes>

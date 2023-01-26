@@ -5,6 +5,7 @@ import Footer from '../../components/landing-page/Footer';
 import Signup from '../../components/sign-up/Signup';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { Spinner } from 'flowbite-react';
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const SignupPage = () => {
       const { error } = await register(user);
       if (!error) {
         Swal.fire('Success', 'Registration success!', 'success');
+        <Spinner aria-label="Extra large spinner example" size="xl" />;
         navigate('/login');
       }
     } catch (error) {

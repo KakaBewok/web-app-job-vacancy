@@ -5,7 +5,6 @@ import { useSearchParams } from 'react-router-dom';
 export const GlobalContext = React.createContext();
 
 export const GlobalProvider = (props) => {
-  const [authedUser, setAuthedUser] = React.useState(null);
   const [jobs, setJobs] = React.useState([]);
   const [job, setJob] = React.useState([]);
   const [currentId, setCurrentId] = React.useState(-1);
@@ -18,6 +17,13 @@ export const GlobalProvider = (props) => {
     return {
       email: '',
       password: '',
+    };
+  });
+  const [inputChangePassword, setInputChangePassword] = React.useState(() => {
+    return {
+      current_password: '',
+      new_password: '',
+      confirm_password: '',
     };
   });
   const [inputSignup, setInputSignup] = React.useState(() => {
@@ -54,8 +60,8 @@ export const GlobalProvider = (props) => {
 
   const objState = React.useMemo(() => {
     return {
-      authedUser,
-      setAuthedUser,
+      inputChangePassword,
+      setInputChangePassword,
       jobs,
       setJobs,
       currentId,
@@ -78,7 +84,7 @@ export const GlobalProvider = (props) => {
       setInputJob,
     };
   }, [
-    authedUser,
+    inputChangePassword,
     jobs,
     job,
     filterData,

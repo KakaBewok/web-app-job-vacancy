@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { GoLocation } from 'react-icons/go';
 import { FaRegBuilding } from 'react-icons/fa';
 import { BiTime } from 'react-icons/bi';
-import { TfiMoney } from 'react-icons/tfi';
+import { GiMoneyStack } from 'react-icons/gi';
 
 const Card = ({
   id,
@@ -65,7 +65,7 @@ const Card = ({
               {company_city}
             </p>
             <p className="text-md mb-3 font-semibold flex">
-              <TfiMoney className="mr-3 mt-1" />
+              <GiMoneyStack className="mr-3 mt-1" />
               {rupiah(salary_min)} - {rupiah(salary_max)}
             </p>
             <hr />

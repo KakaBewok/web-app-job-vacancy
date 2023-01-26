@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { Spinner } from 'flowbite-react';
 
 const NavigationBar = () => {
   return (
@@ -31,8 +32,10 @@ const NavigationBar = () => {
             <li className="tooltip tooltip-top" data-tip="Under maintenance">
               <a>About</a>
             </li>
-            <li className="tooltip tooltip-top" data-tip="Under maintenance">
-              <a>Contact Us</a>
+            <li>
+              <Link to="/contact-us">
+                <p>Contact Us</p>
+              </Link>
             </li>
             {!Cookies.get('token') ? (
               <div></div>
@@ -55,11 +58,10 @@ const NavigationBar = () => {
           >
             <a>About</a>
           </li>
-          <li
-            className="tooltip tooltip-top lg:tooltip-bottom"
-            data-tip="Under maintenance"
-          >
-            <a>Contact Us</a>
+          <li>
+            <Link to="/contact-us">
+              <p>Contact Us</p>
+            </Link>
           </li>
           {!Cookies.get('token') ? (
             <div></div>
@@ -165,6 +167,11 @@ const NavigationBar = () => {
                         Cookies.remove('token');
                         Cookies.remove('name');
                         Cookies.remove('image_url');
+
+                        <Spinner
+                          aria-label="Extra large spinner example"
+                          size="xl"
+                        />;
 
                         window.location = '/login';
                       }}

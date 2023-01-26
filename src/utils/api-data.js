@@ -45,19 +45,31 @@ const register = async ({ name, image_url, email, password }) => {
 const changePassword = async ({
   current_password,
   new_password,
-  new_confirm_password,
+  confirm_password,
 }) => {
-  const response = await axios.post(`${BASE_URL}/change-password`, {
-    current_password,
-    new_password,
-    new_confirm_password,
-  });
+  const response = await axios.post(
+    `${BASE_URL}/change-password`,
+    {
+      current_password,
+      new_password,
+      confirm_password,
+    },
+    {
+      headers: {
+        Authorization: 'Bearer ' + Cookies.get('token'),
+      },
+    }
+  );
 
   if (response.code === 400) {
-    return alert(`The current password is match with old password.`);
+    return {
+      error: true,
+    };
   }
 
-  return alert(response);
+  return {
+    error: false,
+  };
 };
 
 //CRUD JOB VACANCY
